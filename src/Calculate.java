@@ -1,8 +1,10 @@
 
+import java.util.Scanner;
 public class Calculate {
 
     // instance variables
     final float perMonth = 1200F;
+    Scanner scan;
     int n;
     float PMT;
     float r;// (interest rate per year divided by 100 divided by 12)is in percentage
@@ -14,9 +16,21 @@ public class Calculate {
         this.PMT = 0.0F;// the total monthly mortgage payment
         this.r = interestRateIN / (perMonth);
         this.mortgateAmount = mortgateAmountIn; // the principal loan amount
+       
     }
 
     // Calculate mortgage amount PMT
+    public boolean testInputstring(String input, Scanner scan) {
+
+        while (input.isEmpty()) {
+            System.out.println("Field is empty");
+            input = scan.nextLine();
+            System.out.println(input.isEmpty());
+
+        }
+       return input.isEmpty();
+    }
+
     public double fixdedMortgagelyPMT() {
 
         double xn = 2;

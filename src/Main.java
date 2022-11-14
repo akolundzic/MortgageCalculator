@@ -2,17 +2,21 @@ import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+
 
 public class Main {
+    
     // class definition
     final int Constant = 2;
 
     public static void main(String[] args) {
         // creating object of Class
         // creating object of Class
-       
+
         Point point1 = new Point(1, 2);
-        Point point2 = point1;
         point1.x = 5;
         // System.out.println(point2);
         // String message = "Hello \"World!\"";// short cut for new String("Hello Word")
@@ -60,12 +64,22 @@ public class Main {
         // NumberFormat percentagtest = NumberFormat.getPercentInstance();
 
         // scan.close();
-        
+
         // https://www.bankrate.com/mortgages/mortgage-calculator/
-         Calculate obj = new Calculate(12,5F,1200F);
-         System.out.println(obj.fixdedMortgagelyPMT());
-      
+
+        Calculate obj = new Calculate(12,5F,1200F);
+        // System.
+
+        InputStreamReader rdr = new InputStreamReader(System.in);
+        Scanner scan = new Scanner(rdr);
+        System.out.print(" mortgage amount:");
+        String input = scan.nextLine();
+        System.out.print(input);
+        obj.testInputstring(input,scan);
+       
+        scan.close();
        
 
     }
+
 }
