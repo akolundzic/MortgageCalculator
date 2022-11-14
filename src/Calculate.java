@@ -1,43 +1,35 @@
 
 import java.util.Scanner;
+import java.text.DecimalFormat;
+//calculation of the mortgage
+//formula:totalLoanAmountIn*[ r(1 + r)^n ] / [ (1 + r)^n – 1]
+
 public class Calculate {
-
+    DecimalFormat formatter = new DecimalFormat( "#.##" );
     // instance variables
-    final float perMonth = 1200F;
+    final double perMonth = 12F*100F;
     Scanner scan;
-    int n;
-    float PMT;
-    float r;// (interest rate per year divided by 100 divided by 12)is in percentage
-    float mortgateAmount; // mortgage amount,
-    // constructor to instantiate
+    int n;//term in months
+    double PMT;// the total monthly mortgage payment
+    double r;//fixed yearly interest rate
+    double totalLoanAmount; // total loan amount 
+    
 
-    public Calculate(int fixdedMortgageIn, float interestRateIN, float mortgateAmountIn) {
-        this.n = fixdedMortgageIn * 12; // Multiply the number of years in your loan term by 12
-        this.PMT = 0.0F;// the total monthly mortgage payment
-        this.r = interestRateIN / (perMonth);
-        this.mortgateAmount = mortgateAmountIn; // the principal loan amount
-       
+    public Calculate(int termIn, double interestRateIN, double totalLoanAmountIn) {
+        this.n = termIn * 12; // Multiply the number of years in your loan term by 12
+        this.PMT = 0.0F;
+        this.r = interestRateIN /perMonth;// r[%] -> absolute monthly rate r/(100*12)
+        this.totalLoanAmount = totalLoanAmountIn; 
+
     }
-
-    // Calculate mortgage amount PMT
-    public boolean testInputstring(String input, Scanner scan) {
-
-        while (input.isEmpty()) {
-            System.out.println("Field is empty");
-            input = scan.nextLine();
-            System.out.println(input.isEmpty());
-
-        }
-       return input.isEmpty();
-    }
-
-    public double fixdedMortgagelyPMT() {
-
-        double xn = 2;
-        double n = 2;
-        // returns 5 power of 4 i.e. 5*5*5*5
-        double res = Math.pow(xn - 1, n);
-        return res;
+//https://www.mymove.com/mortgage/mortgage-calculation/
+    public double fixedPMT() {
+        
+        // M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1]. 
+        double power = Math.pow((1+this.r),this.n);
+        double res = (this.totalLoanAmount * this.r * power)/(power-1D);
+        this.PMT = Double.parseDouble(formatter.format(res));
+        return this.PMT;
     }
 
 };
