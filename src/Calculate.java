@@ -16,7 +16,7 @@ public class Calculate {
     //constructor
     public Calculate(int termIn, double interestRateIN, double totalLoanAmountIn) {
         this.n = termIn * 12; // Multiply the number of years in your loan term by 12
-        this.PMT = 0.0F;
+        this.PMT = 0.0D;
         this.r = interestRateIN /perMonth;// r[%] -> absolute monthly rate r/(100*12)
         this.totalLoanAmount = totalLoanAmountIn; 
     }
