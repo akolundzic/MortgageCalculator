@@ -13,18 +13,15 @@ public class Calculate {
     double PMT;// the total monthly mortgage payment
     double r;//fixed yearly interest rate
     double totalLoanAmount; // total loan amount 
-    
-
+    //constructor
     public Calculate(int termIn, double interestRateIN, double totalLoanAmountIn) {
         this.n = termIn * 12; // Multiply the number of years in your loan term by 12
         this.PMT = 0.0F;
         this.r = interestRateIN /perMonth;// r[%] -> absolute monthly rate r/(100*12)
         this.totalLoanAmount = totalLoanAmountIn; 
-
     }
 //https://www.mymove.com/mortgage/mortgage-calculation/
     public double fixedPMT() {
-        
         // M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1]. 
         double power = Math.pow((1+this.r),this.n);
         double res = (this.totalLoanAmount * this.r * power)/(power-1D);

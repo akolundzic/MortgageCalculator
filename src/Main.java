@@ -1,12 +1,5 @@
-import java.awt.*;
-import java.text.NumberFormat;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.io.InputStreamReader;
-
-
-
-
 
 public class Main {
     public static String testInputstring(String field, Scanner scan) {
@@ -21,14 +14,11 @@ public class Main {
         }
         return input;
     }
-    // class definition
-    final int Constant = 2;
-
+    //Main method
     public static void main(String[] args) {
 
         InputStreamReader rdr = new InputStreamReader(System.in);
         Scanner scan = new Scanner(rdr);
-        
         double totalLoanAmountIn =Double.parseDouble(testInputstring("Loan amount[€]",scan));
         double interestRateIN =Double.parseDouble(testInputstring("Interest Rate [%]",scan));
         int termIn =Integer.parseInt(testInputstring("Term period [years]",scan));
@@ -36,7 +26,5 @@ public class Main {
         System.out.println(obj.fixedPMT());
 
         scan.close();
-
     }
-
 }
