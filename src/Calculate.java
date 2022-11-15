@@ -20,7 +20,7 @@ public class Calculate {
         this.r = interestRateIN /perMonth;// r[%] -> absolute monthly rate r/(100*12)
         this.totalLoanAmount = totalLoanAmountIn; 
     }
-//https://www.mymove.com/mortgage/mortgage-calculation/
+
     public double fixedPMT() {
         // M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1]. 
         double power = Math.pow((1+this.r),this.n);

@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.InputStreamReader;
 
 public class Main {
+    //function testInputstring
     public static float testInputstring(String field, Scanner scan) {
         
         System.out.print(field+":");
@@ -30,7 +31,6 @@ public class Main {
                 System.out.print(field+":");
             }
         }
-       
         return inputFl;
     }
     //Main method
