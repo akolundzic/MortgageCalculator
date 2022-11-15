@@ -16,4 +16,5 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 ## Dependency Management
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-# FirstJava
+# Mortgage Calculator
+This a simple Mortgage Calculator written in Java and was only created for practise your first steps into the Java world applications. I created a Calculator Class calculting the monthly mortgage payment for a fixed interest rate in percentage and the total loan amount for a specific time period in years. 
