@@ -2,28 +2,48 @@ import java.util.Scanner;
 import java.io.InputStreamReader;
 
 public class Main {
-    public static String testInputstring(String field, Scanner scan) {
+    public static float testInputstring(String field, Scanner scan) {
         
         System.out.print(field+":");
-        String input = scan.nextLine();
-       
-        while (input.isEmpty()) {
-            System.out.print(field + " cannot be empty :");
+        String input; 
+        boolean check = true;
+        Float inputFl = 0F;
+        while (check) {
             input = scan.nextLine();
-            // System.out.println(input.isEmpty());
+            if (input.isEmpty()) {
+                System.out.println(field+" cannot be empty:");
+                System.out.print(field+":");
+                check = true;
+            }
+            else if (input.matches("((-|\\+)?[0-9]+(\\.[0-9]+)?)+")) {
+                inputFl = Float.parseFloat(input);
+                if (inputFl <= 0.0 ) {
+                System.out.println(field+" cannot be negative or zero ");
+                System.out.print(field+":");
+                }
+                else{
+                    check = false;
+                }
+            }
+            else{
+                System.out.println(field+" must be a number ");
+                System.out.print(field+":");
+            }
         }
-        return input;
+       
+        return inputFl;
     }
     //Main method
     public static void main(String[] args) {
 
         InputStreamReader rdr = new InputStreamReader(System.in);
         Scanner scan = new Scanner(rdr);
-        double totalLoanAmountIn =Double.parseDouble(testInputstring("Loan amount[€]",scan));
-        double interestRateIN =Double.parseDouble(testInputstring("Interest Rate [%]",scan));
-        int termIn =Integer.parseInt(testInputstring("Term period [years]",scan));
+        float totalLoanAmountIn =testInputstring("Loan amount[€]",scan);
+        float interestRateIN =testInputstring("Interest Rate [%]",scan);
+        float termFl =testInputstring("Term period [years]",scan);
+        int termIn =(int) termFl;
         Calculate obj = new Calculate(termIn, interestRateIN,totalLoanAmountIn);
-        System.out.println("Your monthly mortgage payment is:"+obj.fixedPMT());
+        System.out.println("Your monthly mortgage payment is :"+obj.fixedPMT()+" €");
 
         scan.close();
     }
