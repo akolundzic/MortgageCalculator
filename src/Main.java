@@ -23,7 +23,7 @@ public class Main {
         double interestRateIN =Double.parseDouble(testInputstring("Interest Rate [%]",scan));
         int termIn =Integer.parseInt(testInputstring("Term period [years]",scan));
         Calculate obj = new Calculate(termIn, interestRateIN,totalLoanAmountIn);
-        System.out.println(obj.fixedPMT());
+        System.out.println("Your monthly mortgage payment is:"+obj.fixedPMT());
 
         scan.close();
     }
