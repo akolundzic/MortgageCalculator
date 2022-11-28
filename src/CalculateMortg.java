@@ -82,34 +82,45 @@ public class CalculateMortg {
         }
         return inputFl;
     }
+
     // calculate mortgage
     public double fixedPMT() {
 
-        // M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1].
+        // M = P [ r(1 + r)^n ] / [ (1 + r)^n – 1].
         double power = Math.pow((1 + this.r), this.term);
         double res = (this.totalLoanAmount * this.r * power) / (power - 1D);
         this.PMT = Double.parseDouble(formatter.format(res));
         return this.PMT;
     }
-    double roundNumber(double numberin){
-        return (Math.round(numberin*100.0))/100.0;
+
+    public double roundNumber(double numberin) {
+        return (Math.round(numberin * 100.0)) / 100.0;
     }
-    public void balancePerMonth() {
+
+    // Formula totalAmount *[(1+r)^term-(1-r)^umber_of_payments_made])/(1+r)^term-1]
+    public double restBalancePerMonth(int i) {
+        double power = Math.pow((1 + this.r), this.term);
+        double powerDecrement = Math.pow((1 + this.r), i);
+        double result = this.totalLoanAmount * ((power - powerDecrement) / (power - 1));
+        return result;
+    }
+
+    public void balancePlan() {
+        for (int i = 0; i < this.term; i++) {
+            double result = roundNumber(restBalancePerMonth(i));
+            System.out.println(result + " €");
+        }
+    }
+
+    public void paymentSchedule() {
         System.out.println("");
         System.out.println("MORTGAGE");
         System.out.println("--------");
-        System.out.println("Monthly payment is:"+fixedPMT()+"€");
+        System.out.println("Monthly payment is:" + fixedPMT() + "€");
         System.out.println();
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("-------");
-        //get monthly payment 
-        fixedPMT();
-        double balance = this.totalLoanAmount;
-        while(true){
-            balance -= this.PMT;
-            if(balance <=0F ) break;
-            System.out.println(roundNumber(balance));
-        }
-    
+        // get monthly payment
+        balancePlan();
     }
 };

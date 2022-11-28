@@ -8,7 +8,7 @@ public class Main {
         InputStreamReader rdr = new InputStreamReader(System.in);
         Scanner scan = new Scanner(rdr);
         CalculateMortg calc = new CalculateMortg(scan);
-        calc.balancePerMonth();
+        calc.paymentSchedule();
         scan.close();
     }
 }
