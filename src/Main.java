@@ -7,8 +7,8 @@ public class Main {
 
         InputStreamReader rdr = new InputStreamReader(System.in);
         Scanner scan = new Scanner(rdr);
-        Calculate obj = new Calculate(scan);
-        System.out.println("Your monthly mortgage payment is:"+obj.fixedPMT()+"€.");
+        CalculateMortg calc = new CalculateMortg(scan);
+        calc.balancePerMonth();
         scan.close();
     }
 }
