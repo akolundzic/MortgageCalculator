@@ -1,3 +1,5 @@
+package App;
+
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
@@ -112,6 +114,22 @@ public class CalculateMortg {
         }
     }
 
+    public void seePaymentSchedule() {
+        String response;
+        System.out.println("Do you want to see the Payment Schedule for " + this.term + " months ?");
+        while (true) {
+            System.out.print("type yes :");
+            response = this.scan.nextLine();
+            if (response.matches("yes")) {
+                balancePlan();
+                break;
+            } else {
+                System.out.println("ok");
+                break;
+            }
+        }
+    }
+
     public void paymentSchedule() {
         System.out.println("");
         System.out.println("MORTGAGE");
@@ -121,6 +139,7 @@ public class CalculateMortg {
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("-------");
         // get monthly payment
-        balancePlan();
+        seePaymentSchedule();
+
     }
 };
