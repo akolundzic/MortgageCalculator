@@ -117,8 +117,10 @@ public class CalculateMortg {
     public void seePaymentSchedule() {
         String response;
         System.out.println("Do you want to see the Payment Schedule for " + this.term + " months ?");
+        
         while (true) {
             System.out.print("type yes :");
+            System.out.println("");
             response = this.scan.nextLine();
             if (response.matches("yes")) {
                 balancePlan();
