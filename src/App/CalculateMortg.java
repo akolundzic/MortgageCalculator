@@ -104,8 +104,8 @@ public class CalculateMortg {
         System.out.println("Do you want to see the Payment Schedule for " + this.term + " months ?");
 
         while (true) {
-            System.out.print("type yes :");
-            System.out.println("");
+            System.out.print("type yes : ");
+            System.out.print("");
             response = this.scan.nextLine();
             if (response.matches("yes")) {
                 System.out.println("-----------------------");
