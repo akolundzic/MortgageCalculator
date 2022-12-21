@@ -32,19 +32,24 @@ public class CalculateMortg {
         return (Math.round(numberin * 100.0)) / 100.0;
     }
 
-    // ---- public methods -----
-    // calculate mortgage
-    public double fixedPMT() {
+    private double fixedPMT() {
 
         // M = P [ r(1 + r)^n ] / [ (1 + r)^n – 1].
         double power = Math.pow((1 + this.r), this.term);
         double res = (this.totalLoanAmount * this.r * power) / (power - 1D);
-        this.PMT = Double.parseDouble(formatter.format(res));
-        return this.PMT;
+        PMT = Double.parseDouble(formatter.format(res));
+        return PMT;
+    }
+
+    // ---- public methods -----
+    // calculate mortgage
+
+    public double getFixedPMT() {
+        return fixedPMT();
     }
 
     public double[] getBalance_WholeTerm() {
-        var restBalancearray = new double[getTerm()-1];
+        var restBalancearray = new double[getTerm() - 1];
 
         for (short i = 1; i <= restBalancearray.length; i++) {
             restBalancearray[i - 1] = roundNumber(restBalancePerMonth(i));

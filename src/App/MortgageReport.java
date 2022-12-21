@@ -11,9 +11,9 @@ public class MortgageReport {
 
     // Print the dynamic balanceplan for the whole term in months
     private void balancePlan() {
-       
-        for(double balance:calculator.getBalance_WholeTerm()){
-            System.out.println(balance+" €");
+
+        for (double balance : calculator.getBalance_WholeTerm()) {
+            System.out.println(balance + " €");
         }
     }
 
@@ -32,7 +32,7 @@ public class MortgageReport {
         System.out.println("");
         System.out.println("MORTGAGE");
         System.out.println("------------------------");
-        System.out.println("Monthly payment is: " + calculator.fixedPMT() + "€");
+        System.out.println("Monthly payment is: " + calculator.getFixedPMT() + "€");
         System.out.println();
         seePaymentSchedule(userAnswer);
     }
