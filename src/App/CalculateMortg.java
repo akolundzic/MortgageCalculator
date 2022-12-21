@@ -9,15 +9,27 @@ public class CalculateMortg {
     private int term = 0;
     private double PMT = 0;// the total monthly mortgage payment
     private double r = 0;// fixed yearly interest rate
-    private double totalLoanAmount = 0; // total loan amount 
+    private double totalLoanAmount = 0; // total loan amount
     // constants
-    
+
     private final static double RATEPERMONTH = 12 * 100;
-   
+
     public CalculateMortg(double totalLoanAmount, double interestRate, int term) {
         this.totalLoanAmount = totalLoanAmount;
         this.r = interestRate / RATEPERMONTH;
         this.term = term * 12;
+    }
+
+    // Formula totalAmount *[(1+r)^term-(1-r)^umber_of_payments_made])/(1+r)^term-1]
+    private double restBalancePerMonth(int i) {
+        double power = Math.pow((1 + this.r), this.term);
+        double powerDecrement = Math.pow((1 + this.r), i);
+        double result = this.totalLoanAmount * ((power - powerDecrement) / (power - 1));
+        return result;
+    }
+
+    private double roundNumber(double numberin) {
+        return (Math.round(numberin * 100.0)) / 100.0;
     }
 
     // ---- public methods -----
@@ -31,19 +43,17 @@ public class CalculateMortg {
         return this.PMT;
     }
 
-    // Formula totalAmount *[(1+r)^term-(1-r)^umber_of_payments_made])/(1+r)^term-1]
-    public double restBalancePerMonth(int i) {
-        double power = Math.pow((1 + this.r), this.term);
-        double powerDecrement = Math.pow((1 + this.r), i);
-        double result = this.totalLoanAmount * ((power - powerDecrement) / (power - 1));
-        return result;
+    public double[] getBalance_WholeTerm() {
+        var restBalancearray = new double[getTerm()];
+
+        for (short i = 1; i < restBalancearray.length; i++) {
+            restBalancearray[i - 1] = roundNumber(restBalancePerMonth(i));
+        }
+        return restBalancearray;
     }
 
     public int getTerm() {
         return this.term;
     }
 
-    public double roundNumber(double numberin) {
-        return (Math.round(numberin * 100.0)) / 100.0;
-    }
 };

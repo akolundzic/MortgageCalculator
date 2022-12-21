@@ -11,9 +11,8 @@ public class MortgageReport {
 
     // Print the dynamic balanceplan for the whole term in months
     private void balancePlan() {
-        for (int i = 0; i < calculator.getTerm(); i++) {
-            double result = calculator.roundNumber(calculator.restBalancePerMonth(i));
-            System.out.println(result + " €");
+        for(int i=0; i < calculator.getTerm()-1;i++){
+            System.out.println(calculator.getBalance_WholeTerm()[i]+" €");
         }
     }
 
