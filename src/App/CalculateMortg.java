@@ -44,9 +44,9 @@ public class CalculateMortg {
     }
 
     public double[] getBalance_WholeTerm() {
-        var restBalancearray = new double[getTerm()];
+        var restBalancearray = new double[getTerm()-1];
 
-        for (short i = 1; i < restBalancearray.length; i++) {
+        for (short i = 1; i <= restBalancearray.length; i++) {
             restBalancearray[i - 1] = roundNumber(restBalancePerMonth(i));
         }
         return restBalancearray;
