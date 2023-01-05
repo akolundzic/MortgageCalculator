@@ -5,7 +5,6 @@ import java.text.DecimalFormat;
 public class CalculateMortg {
 
     DecimalFormat formatter = new DecimalFormat("#.##");
-
     private int term = 0;
     private double PMT = 0;// the total monthly mortgage payment
     private double r = 0;// fixed yearly interest rate
